@@ -18,6 +18,8 @@ with open('wallets', 'a') as file:
         account = generatePair()
         file.write(f'{account.address}|{account.key.hex()}\n')
         loop_count += 1
+        if (datetime.datetime.now()-start_time).seconds == 0:
+            continue
         rate = loop_count/(datetime.datetime.now()-start_time).seconds
         print(f'loop: {loop_count}', end='\r')
         if loop_count == 10000:
